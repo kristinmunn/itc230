@@ -9,4 +9,5 @@ let albums = [
 exports.albums = albums
 
 console.log("length " + items.length)
+console.log(albums)
 
