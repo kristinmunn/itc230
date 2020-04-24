@@ -1,36 +1,27 @@
-  
-var http = require("http"), fs = require('fs');
+const http = require("http");
+const album = require("./data");
+var all = album.getAll();
 
-function serveStatic(res, path, contentType, responseCode){
-  if(!responseCode) responseCode = 200;
-  console.log(__dirname + path)
-  fs.readFile(__dirname + path, function(err, data){
-      if(err){
-        res.writeHead(500, {'Content-Type': 'text/plain'});
-        res.end('Internal Server Error');
-      }
-      else{
-        res.writeHead(responseCode, {'Content-Type': contentType});
-        res.end(data);
-      }
-  });
-}
-
-http.createServer(function(req,res){
-  console.log('createServer got request')
-  var path = req.url.toLowerCase();
+http.createServer((req,res) => {
+  const path = req.url.toLowerCase();
   switch(path) {
-    case '/': 
-      serveStatic(res, '/../public/home.html', 'text/html');
-      break;
+    case '/':
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.end('Kristin\'s assignment1 Home Page. ' + '\n We have ' + all.length +
+      ' albums in our data. ' );
+    break;
+
     case '/about':
       res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('About');
-      break;
+      res.end('My name is Kristin. I am taking classes in computer programming to help widen my knowledge and skill base, '+
+      'and to hopefully break into the world of IT as a career.');
+    break;
+    
     default:
       res.writeHead(404, {'Content-Type': 'text/plain'});
-      res.end('404:Page not found.');
-  }
-  
+      res.end('Not found');
+    break;
+
+  }      
 }).listen(process.env.PORT || 3000);
-console.log('after createServer')
+
