@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Details of {{title}}</title>
+       
+    </head>
+    <body>
+      <!-- <script>
+       
+       <nav>
+        <ul>
+            <li><a href="/">ALBUMS LIST</a></li>
+            <li><a href="detail.html">INTRO</a></li>
+                
+            </ul>
+            </nav> 
+    </script> -->
+     
+     
+        <h2>Details of {{title}}:</h2>
+       
+{{#if result}}
+  <p>Album Title: {{result.title}}</p>
+  <p>Artist: {{result.artist}}</p>
+  <p>Studio: {{result.studio}}</p>
+  <p>Genre: {{result.genre}}</p>
+ 
+  
+{{else}}
+  <p>Sorry {{title}} does not exist</p>
+{{/if}}
+  <p><a href="home">Home Albums page</a></p>
+    
+    </body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>This is my Home Page.</title>
+        <h2>Home Page</h2>
+    </head>
+    <body>
+      <!-- <script>
+       
+       <nav>
+        <ul>
+          <li><a href="/">ALBUMS LIST</a></li>
+          <li><a href="detail.html">INTRO</a></li>
+                   
+         </ul>
+            </nav>    
+    </script> -->
+     
+<p>This is the Home Page to show our arrays.</p>
+<h3>Album List:</h3>
+{{#if albums.length}}
+    <table>
+            <tr>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Studio</th>
+              <th>Genre</th>
+            </tr>
+    {{#each albums}}
+    <tr>
+            <td>{{title}}</td>
+            <td>{{artist}}</td>
+            <td>{{studio}}</td>
+            <td>{{genre}}</td>
+          </tr>
+    {{/each}}
+</table>
+    {{else}}
+    <h3> Sorry Empty list</h3>
+        {{/if}}      
+<h4>Display Album</h4>
+
+{{#if albums.length}}
+    <table>
+            <tr>
+              <th>Title</th>
+             
+            </tr>
+    {{#each albums}}
+    <tr>
+            <td><form method="GET" action="/detail">
+              <div class="row">
+                       <a href="http://localhost:3000/detail?title={{title}}">{{title}}</a>
+             </div>
+            </form></td>
+           
+          </tr>
+    {{/each}}
+</table>
+    {{else}}
+    <h3> Sorry Empty list</h3>
+        {{/if}}
+
+
+
+        
+    </body>
+</html>
