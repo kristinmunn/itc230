@@ -2,11 +2,11 @@
 <html lang="en-us">
     <head>
         <meta charset="UTF-8">
-        <title>Details of {{title}}</title>
+        <title>Delete Album: {{title}}</title>
        
     </head>
     <body>
-        <!-- <script>
+    <!-- <script>
        
        <nav>
         <ul>
@@ -17,20 +17,17 @@
                 
             </ul>
             </nav> 
-        </script> -->
-     
-     
-        <h2>Details of {{title}}:</h2>
-       
-{{#if result}}
+    </script> -->
+          
+{{#if delete}}
+<h2>Deleting {{title}}:</h2>
   <p>Album Title: {{result.title}}</p>
   <p>Artist: {{result.artist}}</p>
   <p>Studio: {{result.studio}}</p>
   <p>Genre: {{result.genre}}</p>
- 
-  
+   
 {{else}}
-  <p>Sorry {{title}} does not exist</p>
+  <p>Sorry, {{title}} does not exist.<p>
 {{/if}}
   <p><a href="home">Home Albums page</a></p>
     

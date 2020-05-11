@@ -23,12 +23,36 @@ app.get('/', (req,res) => {
  res.render('home', {albums: album.getAll()}); //render the whole thing we have in our array
 });
 
-
 app.get('/detail', (req,res) => {
   res.type('text/html');
   const result = album.getAlbum(req.query.title);
   res.render('detail', {title: req.query.title, result: result, albums: album.getAll()});
 });
+
+//delete
+app.get('/delete', (req, res) => {
+  res.type('text/html');
+ // let lengthbefore = album.getAlbum().length;
+  let search = album.getAlbum(req.query.title); // get album object
+  let resultfound = (search) ? search : "Album not found";
+      let deleted = album.deleteAlbum(req.query.title);
+    //  let lengthafter = album.getAlbum().length; 
+  res.render('delete', {title: req.query.title,
+    result: resultfound, delete: deleted, albums: album.getAll()});
+    //length2: lengthafter, length1: lengthbefore, 
+});
+
+//add
+ app.get('/add', (req, res) => {
+  res.type('text/html');
+     //let lengthbefore1 = album.getAll().length;
+      let newAlbum = {"title":req.query.title, "artist":req.query.artist, "studio":req.query.studio};
+      let add = album.addAlbum(newAlbum);
+     // let lengthafter1 = album.getAll().length;
+     res.render('add', {title: req.query.title,
+      album: newAlbum, add: add, albums: album.getAll()});
+      //length2: lengthafter1, length1: lengthbefore1,
+     });
 
 // send static file as response
 app.get('/home2', (req, res) => {
